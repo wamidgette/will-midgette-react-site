@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&family=Poppins&display=swap');
+
+html {
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  //Fonts 
+  font-family: var(--secondary-font);
+  
+  //Colors
+  --primary-color: #770000;
+  --secondary-color: #020077;
+  --white: #bceaff;
+  --light-gray:#b8b8b8; 
+  --dark-gray: #0e0e0e;
+  --black: #0c0c0c;
+  --error-color: #eb5757;
+  --primary-font: 'Consolas', sans-serif;
+  --secondary-font: poppins;
+  --global-font-size: 16px;
+  @media (max-width: 600px) {
+    --global-font-size: 18px;
+  }
+}
+
+.app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header{
+  flex: 0 0 0;
+}
+
+main{
+  width: 100%;
+  position:relative;
+  flex: 1 0 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  // margin: auto;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Consolas', sans-serif;
+  color: var(--light-gray)
+}
+
+p{
+  color: var(--light-gray);
+}
+
+h2{
+  font-size: 2rem;
+}
+
+body{
+  background: var(--dark-gray);
+  font-family: 'Consolas', sans-serif;
+  font-size: 16px;
+  width:100vw;
+}
+
+.app{
+  min-height:100vh;
+  display: flex;
+  flex-direction: column;
+}
+
