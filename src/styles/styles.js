@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 export const Colours = {
   primary: '',
 };
@@ -10,7 +12,7 @@ const Breakpoints = {
   xxl: '1440px',
 };
 
-export const DeviceBreakpoints = {
+export const BreakPoints = {
   smallOnly: `(max-width: ${Breakpoints.sm})`,
   smallUp: `(min-width: ${Breakpoints.sm})`,
   betweenSmallAndLarge: `(min-width: ${Breakpoints.sm}) and (max-width: ${Breakpoints.lg})`,
@@ -22,4 +24,14 @@ export const DeviceBreakpoints = {
   xlargeDown: `(max-width: ${Breakpoints.xl})`,
   xlargeUp: `(min-width: ${Breakpoints.xl})`,
   xxlargeUp: `(min-width: ${Breakpoints.xxl})`,
+  xxlargeDown: `(max-width: ${Breakpoints.xxl})`,
 };
+
+const Title = styled.h2`
+  width: max-content;
+  font-size: 3.5rem;
+  justify-self: center;
+  align-self: center;
+`;
+
+export const PageTitle = Title
