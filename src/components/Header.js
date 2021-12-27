@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components'
-import { DeviceBreakpoints } from '../styles/styles';
+import { BreakPoints } from '../styles/styles';
 import {Link} from 'react-router-dom';
 
 const HeaderWrapper = styled.header`
-  width:100%; 
+  width:100vw; 
   background: var(--black);
   padding: 20px 150px;
+  border-bottom: 2px solid var(--light-gray);
+  @media ${BreakPoints.medDown}{
+    padding: 20px 50px;
+  }
 `;
 const Navigation = styled.nav`
   display:flex;
@@ -17,7 +21,7 @@ const Applink = styled(Link)`
   margin-left:auto;
   text-decoration: none;
   color:var(--white);
-  font-size: 1rem;
+  font-size: 1.3rem;
   transition: all 0.1s ease-out;
   position:relative;
   overflow:hidden;
@@ -35,6 +39,9 @@ const Applink = styled(Link)`
   &:hover::after{
     width:100%;
     color:var(--primary-color);
+  }
+  @media ${BreakPoints.medDown}{
+    font-size: 1rem;
   }
 `;
 const Logo = styled(Link)`
