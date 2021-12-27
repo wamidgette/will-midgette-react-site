@@ -4,13 +4,15 @@ import SwiperCore, { Navigation, Thumbs } from 'swiper';
 import 'swiper/swiper-bundle.css';
 
 const SwiperContainer = styled(Swiper)`
-  width: 40%;
-  // background: var(--light-gray);
-  // padding: 50px;
+  margin: 0;
   .swiper-slide {
     cursor: pointer;
+    a{
+      display: block;
+    }
     img{
       width: 100%;
+      // height: 350px;
     }
   }
   .swiper-button-next,
@@ -28,7 +30,9 @@ const SwiperContainer = styled(Swiper)`
       }
     }
   }
+  //Thumbnail swiper carousel styling
   &.thumbnail-swiper {
+    width: 100%;
     .swiper-wrapper {
       display: grid;
       grid-template-columns: repeat(4, calc(25% - 3px));
@@ -42,6 +46,7 @@ const SwiperContainer = styled(Swiper)`
       }
     }
     img {
+      width: 100px;
       object-fit: cover;
       height:100px;
     }
@@ -88,10 +93,16 @@ export default function SlideShow({
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div>
-          {!onSwiper && <h2>{slide.title}</h2> }
-            <img alt = {`${slide.title} project`} src={ onSwiper ? `/images/projects/thumbnails/${slide.imageName}` : `/images/projects/${slide.imageName}` }/>
-            {!onSwiper && <p>{slide.description}</p> }
+          <div> {/* If this is just a thumbnail slide only show the image. If its the main slide wrap the image in an anchor tag and show the description */}
+          {onSwiper? <img alt = {`${slide.title} project`} src={ `/images/projects/thumbnails/${slide.imageName}` }/> : (
+          <>
+            <h2>{slide.title}</h2>
+            <a href = {slide.projectUrl}>
+              <img alt = {`${slide.title} project`} src={ `/images/projects/${slide.imageName}` }/>
+            </a>
+            <p>{slide.description}</p>
+          </> 
+          )}
           </div>
         </SwiperSlide>
       ))}
