@@ -146,7 +146,7 @@ export default function About() {
     <AboutDiv>
       <Title>About Me</Title>
       <HeadShot><img src='/images/will.jpg' alt='Will Midgette'/></HeadShot>
-      <Bio>Hi, my name is Will and I'm a full-stack web developer. Although I primarily work with JavaScript, I am skilled in a number of other languages such as PHP, SQL, CSS, HTML, and XML. I'm also experienced using tools and frameworks such as React, Node, Next.js, WordPress, and more! This website is an example of something I built using React along with 3rd party node packages like Swiperjs, Emailjs, Styled-Components, and Sass. Make sure to check out some of my <Link to={'../projects'}>projects</Link>, and if you're interested in my work feel free to leave me a <Link to={'../contact'}>message</Link>!
+      <Bio>Hi, my name is Will and I'm a full-stack web developer. Although I primarily work with JavaScript, I am skilled in a number of other languages such as PHP, SQL, CSS, HTML, and XML. I'm also experienced using a number of libraries and frameworks. This website is an example of something I built using React along with 3rd party node packages like Swiperjs, Emailjs, Styled-Components, and Sass. Make sure to check out some of my <Link to={'../projects'}>projects</Link>, and if you're interested in my work feel free to leave me a <Link to={'../contact'}>message</Link>!
       <br/><br/>Download my resume <a href="/documents/will-midgette-resume.docx" download="WillMidgette_Resume_2021">here</a>!
       </Bio>
       <BackGroundInfo>
