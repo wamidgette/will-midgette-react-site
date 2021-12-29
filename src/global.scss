@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 html {
-  *, *:before, *:after {
-    box-sizing: border-box;
-  }
-
-  //Fonts 
-  font-family: var(--primary-font);
-  
+  box-sizing: border-box;
+  //TODO: Temp fix - Not sure why the horizontal scroll bar is showing up. None of my elements are wider than the page
+  overflow-x: hidden;
   //Colors
   --primary-color: #770000;
   --secondary-color: #020077;
-  --white: #bceaff;
+  --white: #fff;
   --light-gray:#b8b8b8; 
   --dark-gray: #0e0e0e;
   --black: #0c0c0c;
   --error-color: #eb5757;
-  --primary-font: 'Consolas', sans-serif;
+  //Fonts 
+  --primary-font: 'Consolas', 'IBM Plex Mono', monospace;
   --secondary-font: poppins;
   --global-font-size: 16px;
   @media (max-width: 600px) {
@@ -26,7 +26,6 @@ html {
 .app{
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 header{
@@ -39,14 +38,15 @@ main{
   display: flex;
   flex-direction: column;
   padding: 0 50px;
+  //remove padding at tablet size downward
   @media (max-width: 768px){
     padding: 0;
   }
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Consolas', sans-serif;
-  color: #fff;
+  font-family: var(--primary-font);
+  color: var(--white);
 }
 
 p{
@@ -56,7 +56,7 @@ p{
 body{
   background: var(--dark-gray);
   color: var(--light-gray);
-  font-family: 'Consolas', sans-serif;
+  font-family: var(--primary-font);
   font-size: 16px;
 }
 
