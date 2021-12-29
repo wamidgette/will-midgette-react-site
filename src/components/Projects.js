@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components'
 import ProjectsArray from './ProjectsArray'
 import SlideShow from './SlideShow'
-import { BreakPoints } from '../styles/styles';
+import { BreakPoints, PageTitle } from '../styles/styles';
 
 const Projectsdiv = styled.div`
   display: grid;
@@ -17,21 +17,7 @@ const Projectsdiv = styled.div`
     grid-template-columns: 100vw;
   }
 `;
-const PageTitle = styled.h2`
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  width: max-content;
-  padding: 0 20px;
-  position: relative;
-  bottom: 0;
-  font-size: 3.5rem;
-  margin: 15px 30px;
-  justify-self: center; 
-  @media ${BreakPoints.xxlargeDown}{
-    font-size: 2.5rem;
-  }
-`;
-const Title = styled.h2`
+const Title = styled(PageTitle)`
   font-size: 3.5rem;
   justify-self: center;
   align-self: center;
@@ -102,6 +88,7 @@ export default function Projects() {
           thumbs={{ swiper: thumbsSwiper }}
           slides =  {ProjectsArray}
           allowTouchMove
+          spaceBetween = {10}
         />
       </MainSlides>
       <ThumbNailSlides>

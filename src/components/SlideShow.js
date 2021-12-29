@@ -2,22 +2,28 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
 import SwiperCore, { Navigation, Thumbs } from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { BreakPoints } from '../styles/styles';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SwiperContainer = styled(Swiper)`
   margin: 0;
   .swiper-slide {
-    cursor: pointer;
-    a{
-      display: block;
-    }
+    cursor: auto;
     img{
+      cursor: grab;
       width: 100%;
-      // height: 350px;
+      height:100%;
+      object-fit: cover;
     }
   }
   .swiper-button-next,
   .swiper-button-prev {
     top: 300px;
+    @media ${BreakPoints.smallOnly}{
+      top: 200px;
+    }
     &::after {
       font-size: 30px;
       font-weight: bold;
@@ -46,11 +52,51 @@ const SwiperContainer = styled(Swiper)`
       }
     }
     img {
+      cursor: pointer;
       width: 100px;
       object-fit: cover;
       height:100px;
     }
   }
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  height:350px;
+  @media ${BreakPoints.smallOnly}{
+    height: 200px;
+  }
+`;
+
+const Urls = styled.div`
+  display: flex;
+  background: var(--light-gray);
+  position: absolute;
+  padding: 2px 5px;
+  top: 10px;
+  right: 10px;
+  gap: 5px;
+  border-radius: 5px;
+  box-shadow: -2px 2px black;
+  a{
+    color: black;
+    :hover{
+      color: var(--primary-color);
+    }
+  }
+  @media ${BreakPoints.smallOnly}{
+    gap:10px;
+    top: 0px;
+    right: 0px;
+    a{
+      color: var(--primary-color);
+    }
+  }
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+  font-size: 3rem;
+  transition: 0.2s;
 `;
 
 /**
@@ -74,7 +120,6 @@ export default function SlideShow({
   loop = false,
 }) {
   SwiperCore.use([Navigation, Thumbs]);
-  console.log(slides[0].imageName)
   return (
     <SwiperContainer
       loop={loop}
@@ -94,12 +139,16 @@ export default function SlideShow({
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
           <div> {/* If this is just a thumbnail slide only show the image. If its the main slide wrap the image in an anchor tag and show the description */}
-          {onSwiper? <img alt = {`${slide.title} project`} src={ `/images/projects/thumbnails/${slide.imageName}` }/> : (
+          {onSwiper? <img alt = {`${slide.title}`} src={slide.thumbnail_path}/> : (
           <>
             <h2>{slide.title}</h2>
-            <a href = {slide.projectUrl}>
-              <img alt = {`${slide.title} project`} src={ `/images/projects/${slide.imageName}` }/>
-            </a>
+            <ImageWrapper>
+              <img alt = {`${slide.title}`} src={slide.image_path}/>
+              <Urls>
+                {/* <a target="blank" href={slide.projectUrl}><Icon icon = {faExternalLinkSquareAlt}/></a> */}
+                <a target="blank" href={slide.githubUrl}><Icon icon = {faGithubSquare}/></a>
+              </Urls>
+            </ImageWrapper>
             <p>{slide.description}</p>
           </> 
           )}
