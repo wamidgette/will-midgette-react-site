@@ -4,7 +4,6 @@ import { BreakPoints } from '../styles/styles';
 import {Link} from 'react-router-dom';
 
 const HeaderWrapper = styled.header`
-  width:100vw; 
   background: var(--black);
   padding: 20px 150px;
   border-bottom: 2px solid var(--light-gray);
@@ -18,54 +17,42 @@ const HeaderWrapper = styled.header`
 const Navigation = styled.nav`
   display:flex;
   align-items: center;
-  justify-content: flex-start;
 `;
 const Applink = styled(Link)`
   margin-left:auto;
   text-decoration: none;
   color:var(--white);
   font-size: 1.3rem;
-  transition: all 0.1s ease-out;
   position:relative;
-  overflow:hidden;
   //Red underline for header links
   &::after{
     content:"";
     position:absolute;
     bottom:0;
-    left:-2px;
+    left: 0px;
     width:0%;
     height: 2px;
-    background: red;
     transition: width 0.6s;
   }
   &:hover::after{
     width:100%;
-    color:var(--primary-color);
+    background: red;
   }
   @media ${BreakPoints.medDown}{
     font-size: 1rem;
   }
 `;
 const Logo = styled(Link)`
-  padding: 4px;
-  overflow: hidden;
-  background: transparent;
   display : flex;
-  flex-direction: column;
-  background:var(--white);
-  outline: 4px solid var(--primary-color);
-  border-radius:50%;
-  justify-content: center;
-  width:2.5rem;
-  height:2.5rem;
-  text-decoration: none;
-  &::after{
-    position:absolute;
-    height:100%;
-    width:100%;
-    left:0;
-    top:0;
+  img{
+    width: 2.5rem; 
+    border-radius: 50%;
+    outline: 4px solid var(--primary-color);
+    padding: 2px;
+    background: var(--white);
+    @media ${BreakPoints.smallOnly}{
+      outline: none;
+    }
   }
 `;
 

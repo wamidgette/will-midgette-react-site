@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt, faMobile, faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 import { faHtml5, faCss3, faJs, faNodeJs, faPhp, faReact, faGit } from '@fortawesome/free-brands-svg-icons'
 import { BreakPoints, PageTitle } from '../styles/styles';
+import {Link} from 'react-router-dom';
 
 const AboutDiv = styled.div`
   display: grid;
@@ -19,7 +20,6 @@ const AboutDiv = styled.div`
     margin: 0;
   }
 `;
-
 const Title = styled(PageTitle)`
   grid-row: 1 / 2;
   grid-column: 1 / 2;
@@ -33,7 +33,6 @@ const Title = styled(PageTitle)`
 `;
 const HeadShot = styled.div`
   position: relative;
-  z-index: 4;
   padding: 50px;
   height: 100%;
   display: flex;
@@ -120,6 +119,7 @@ const BackGroundInfo = styled.div`
   }
 `;
 const Languages = styled.div`
+  color: black;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -135,17 +135,10 @@ const Languages = styled.div`
     background: white;
     box-shadow: 4px 4px 4px var(--black);
     transition: 0.1s;
-    :hover{
-      transform: scale(1.3)
-    }
-    span{
-      color: var(--black);
-    }
   }
 `;
 const Icon = styled(FontAwesomeIcon)`
   font-size: 4rem;
-  color: var(--black)
 `;
 
 export default function About() {
@@ -153,7 +146,7 @@ export default function About() {
     <AboutDiv>
       <Title>About Me</Title>
       <HeadShot><img src='/images/will.jpg' alt='Will Midgette'/></HeadShot>
-      <Bio>Hi, my name is Will and I am a full-stack web developer. There is nothing more satisfying to me than turning an idea into reality, and my skills in a number of languages such as JavaScript, PHP, C#(ASP.NET), MySQL, HTML, CSS and XML allow me to do just that. This website is an example of something I built from scratch, using no frameworks or libraries. If you're interested in my work, feel free to leave me a message!
+      <Bio>Hi, my name is Will and I'm a full-stack web developer. Although I primarily work with JavaScript, I am skilled in a number of other languages such as PHP, SQL, CSS, HTML, and XML. I'm also experienced using tools and frameworks such as React, Node, Next.js, WordPress, and more! This website is an example of something I built using React along with 3rd party node packages like Swiperjs, Emailjs, Styled-Components, and Sass. Make sure to check out some of my <Link to={'../projects'}>projects</Link>, and if you're interested in my work feel free to leave me a <Link to={'../contact'}>message</Link>!
       <br/><br/>Download my resume <a href="/documents/will-midgette-resume.docx" download="WillMidgette_Resume_2021">here</a>!
       </Bio>
       <BackGroundInfo>
