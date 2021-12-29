@@ -11,6 +11,9 @@ const HeaderWrapper = styled.header`
   @media ${BreakPoints.medDown}{
     padding: 20px 50px;
   }
+  @media ${BreakPoints.smallOnly}{
+    padding: 10px 20px;
+  }
 `;
 const Navigation = styled.nav`
   display:flex;
@@ -45,10 +48,13 @@ const Applink = styled(Link)`
   }
 `;
 const Logo = styled(Link)`
-  // margin-right: auto;
+  padding: 4px;
+  overflow: hidden;
+  background: transparent;
   display : flex;
   flex-direction: column;
   background:var(--white);
+  outline: 4px solid var(--primary-color);
   border-radius:50%;
   justify-content: center;
   width:2.5rem;
@@ -61,37 +67,14 @@ const Logo = styled(Link)`
     left:0;
     top:0;
   }
-  &:hover .spinner{
-    animation: rotate20 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
-    cursor:pointer;
-  }
 `;
-const Spinner = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  span{
-    font-size:1rem;
-    &:first-of-type{
-      color:var(--primary-color);
-      border-bottom: 1px solid black;
-      padding: 0 10px
-    }
-    &:nth-of-type(2){
-      transform: rotate(180deg);
-      color: var(--secondary-color);
-    }
-  }
-`;
+
 export default function Header() {
   return (
     <HeaderWrapper> 
       <Navigation>
         <Logo to="./">
-          <Spinner>
-              <span>W</span>  
-              <span>W</span>  
-          </Spinner>
+          <img alt="home link" src='/header-logo.png'></img>
         </Logo>
         <Applink to="/about">ABOUT</Applink>
         <Applink to="/projects">PROJECTS</Applink>
