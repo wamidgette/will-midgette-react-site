@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'
 import { BreakPoints, PageTitle } from '../styles/styles';
-
+import emailjs from 'emailjs-com';
+import dotenv from 'dotenv'
+dotenv.config();
 const ContactDiv = styled.form`
   width: 650px;
   margin: 100px auto;
@@ -44,7 +46,7 @@ const FormField = styled.div`
     padding-left: 10px;
     width: 100%;
     font-size: 1.4rem;
-    font-family: 'Consolas', sans-serif;
+    font-family: var(--primary-font);
   }
   @media ${BreakPoints.medDown}{
     margin: 20px;
@@ -95,20 +97,28 @@ const SubmitBlock = styled.div`
 grid-column: 1 / 3;
 text-align: center;
 border-top: 2px solid var(--light-gray);
-padding-top: 30px;
-button{
+border-bottom: 2px solid var(--light-gray);
+padding: 30px 0;
+`;
+
+const SubmitButton = styled.button.attrs({type: 'button'})`
   border:none;
   font-size: 40px;
   font-family: var(--primary-font);
   background: var(--light-gray);
-  padding: 0 50px;
+  padding: 0 30px;
+  border-radius: 5px;
   :hover{
     cursor: pointer;
     color: var(--white);
     background: var(--dark-gray);
     background: var(--primary-color);
   } 
-}
+`;
+
+const ReTryButton = styled(SubmitButton).attrs({type: 'button'})`
+  font-size: initial;
+  padding: 0 10px;
 `;
 
 export default function Contact() {
@@ -124,15 +134,16 @@ export default function Contact() {
     subject: "",
     messageContent: ""
   })
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
   function handleInputChange(e){
     setFormState({...formState, [e.target.name]: e.target.value})
   }
   function validateFormState(){
     //For each state property, check type and perform validation. Store any errors
     const newErrors = {};
-    console.log(Object.entries(formState));
     Object.entries(formState).forEach((field)=>{
-      console.log(field[0])
       const [name, value] = field;
       switch(name){
         case 'name':
@@ -165,10 +176,18 @@ export default function Contact() {
   function submitMessage(){
     const newErrors = validateFormState();
     if(Object.keys(newErrors).length === 0){
-      console.log('form is valid')
-    }
-    else{
-      console.log(newErrors);
+      setSubmitted(true);
+      setSending(true);
+      emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, {name: formState.name, subject: formState.subject, email: formState.email, message_content: formState.messageContent }, process.env.REACT_APP_USER_ID).then(
+        (response) => {
+          setSending(false)
+          setEmailSent(true)
+        }, (err) => {
+          setSending(false)
+          setEmailSent(false)
+          console.log('error')
+        }
+      )
     }
   }
   return (
@@ -192,7 +211,12 @@ export default function Contact() {
           <textarea maxLength={400} type="textarea" placeholder='how can I help?' value={formState.messageContent} name='messageContent' onChange={handleInputChange}></textarea>
           <ErrorMessage>{errors.messageContent}</ErrorMessage>
       </Details>
-      <SubmitBlock><button type='button' onClick={submitMessage}>Send</button></SubmitBlock>
+      <SubmitBlock>
+        {submitted? 
+          <>{sending? 'sending...' : <div>{emailSent? <p>your message was sent!</p> : <p style={{color: 'var(--error-color)'}}>sorry, something went wrong. <ReTryButton onClick={()=>setSubmitted(false)}>Try again?</ReTryButton></p>}</div>}</> :
+          <SubmitButton type='button' onClick={submitMessage}>Send</SubmitButton>
+        }
+      </SubmitBlock>
     </ContactDiv>
   );
 }
