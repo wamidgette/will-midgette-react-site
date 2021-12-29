@@ -1,21 +1,23 @@
 import React from 'react';
 import './global.scss';
 import { Routes, Route } from 'react-router-dom';
-import {useState} from 'react'
 import Header from './components/Header'
 import HomePage from './components/HomePage'
 import About from './components/About'
 import Contact from './components/Contact'
 import Projects from './components/Projects'
 import styled from 'styled-components'
-
+import { Helmet } from 'react-helmet';
 const AppDiv = styled.div`
-
 `;
 
 function App() {
   return (
     <AppDiv className = "app">  
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Will Midgette</title>
+      </Helmet>
       <Header/>
       <main>
         <Routes>
