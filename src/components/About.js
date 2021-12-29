@@ -87,7 +87,7 @@ const Bio = styled.p`
   padding: 50px;
   line-height: 2rem;
   a{
-    color: var(--primary-color);
+    color: var(--white);
     transition: 0.3s;
     :hover{
       color: var(--primary-color);
@@ -154,7 +154,7 @@ export default function About() {
       <Title>About Me</Title>
       <HeadShot><img src='/images/will.jpg' alt='Will Midgette'/></HeadShot>
       <Bio>Hi, my name is Will and I am a full-stack web developer. There is nothing more satisfying to me than turning an idea into reality, and my skills in a number of languages such as JavaScript, PHP, C#(ASP.NET), MySQL, HTML, CSS and XML allow me to do just that. This website is an example of something I built from scratch, using no frameworks or libraries. If you're interested in my work, feel free to leave me a message!
-      <br/><br/>Download my resume <a href="../Resume/WillMidgette_Resume_2021.pdf" download="WillMidgette_Resume_2021">here!</a>
+      <br/><br/>Download my resume <a href="/documents/will-midgette-resume.docx" download="WillMidgette_Resume_2021">here</a>!
       </Bio>
       <BackGroundInfo>
         <h3>My Skills</h3>
