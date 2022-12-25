@@ -31,6 +31,23 @@ const Title = styled(PageTitle)`
     font-size: 2.5rem;
   }
 `;
+const ImageWrapper = styled.div`
+width: 400px;
+height: 400px;
+overflow: hidden;
+border-radius: 50%;
+img{
+  width: 100%;
+}
+@media${BreakPoints.xxlargeDown}{
+  width: 300px;
+  height: 300px;
+}
+@media${BreakPoints.smallOnly}{
+  width: 225px;
+  height: 225px;
+}
+`;
 const HeadShot = styled.div`
   position: relative;
   padding: 50px;
@@ -39,10 +56,7 @@ const HeadShot = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  img{
-    border-radius: 50%;
-    width: 400px;
-  }
+
   ::after{
     content: "";
     position: absolute;
@@ -54,17 +68,11 @@ const HeadShot = styled.div`
     border-right: 2px solid var(--light-gray);
   }
   @media ${BreakPoints.xxlargeDown}{
-    img{
-      width: 300px;
-    }
     ::after{
       border-right: none;
     }
   }
   @media ${BreakPoints.medDown}{
-    img {
-      width: 300px;
-    }
     ::after{
       border-left: none;
       border-top: 2px solid var(--light-gray);
@@ -72,9 +80,6 @@ const HeadShot = styled.div`
     padding: 50px 0;
   }
   @media ${BreakPoints.smallOnly}{
-    img{ 
-      width: 225px;
-    }
     padding: 20px 0;
   }
 `;
@@ -137,16 +142,19 @@ const Languages = styled.div`
     transition: 0.1s;
   }
 `;
+
+
+
 const Icon = styled(FontAwesomeIcon)`
   font-size: 4rem;
 `;
 
-export default function About() {
+export default function About(){
   return (
     <AboutDiv>
       <Title>About Me</Title>
-      <HeadShot><img src='/images/will.jpg' alt='Will Midgette'/></HeadShot>
-      <Bio>Hi, my name is Will and I'm a full-stack web developer. Although I primarily work with JavaScript, I am skilled in a number of other languages such as PHP, SQL, CSS, HTML, and XML. I'm also experienced using a number of libraries and frameworks. This website is an example of something I built using React along with 3rd party node packages like Swiperjs, Emailjs, Styled-Components, and Sass. Make sure to check out some of my <Link to={'../projects'}>projects</Link>, and if you're interested in my work feel free to leave me a <Link to={'../contact'}>message</Link>!
+      <HeadShot><ImageWrapper><img src='/images/will.jpg' alt='Will Midgette'/></ImageWrapper></HeadShot>
+      <Bio>Hi, my name is Will and I'm a full-stack web developer. Although I primarily work with JavaScript, I am skilled in a number of other languages such as PHP, SQL, CSS, HTML, and XML. I'm also experienced using a number of libraries and frameworks. This website is an example of something I built using React along with 3rd party Node packages like Swiperjs, Emailjs, Styled-Components, and Sass. Make sure to check out some of my <Link to={'../projects'}>projects</Link>, and if you're interested in my work feel free to leave me a <Link to={'../contact'}>message</Link>!
       <br/><br/>Download my resume <a href="/documents/will-midgette-resume.docx" download="WillMidgette_Resume_2021">here</a>!
       </Bio>
       <BackGroundInfo>
@@ -166,5 +174,5 @@ export default function About() {
         </Languages>
       </BackGroundInfo>
     </AboutDiv>
-  );
+  )
 }

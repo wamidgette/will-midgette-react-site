@@ -16,6 +16,8 @@ function App() {
     <AppDiv className = "app">  
       <Helmet>
         <meta charSet="utf-8" />
+        <meta name="title" property="og:title" content="Will Midgette"/>
+        <meta name="image" property="og:image" content="https://willmidgette.com/images/header-logo.png"/>      
         <title>Will Midgette</title>
       </Helmet>
       <Header/>

@@ -70,27 +70,25 @@ const ImageWrapper = styled.div`
 
 const Urls = styled.div`
   display: flex;
-  background: var(--light-gray);
+  background: var(--white);
   position: absolute;
-  padding: 2px 5px;
+  padding: 0px 2px;
   top: 10px;
   right: 10px;
-  gap: 5px;
+  gap: 2px;
   border-radius: 5px;
-  box-shadow: -2px 2px black;
+  // box-shadow: -2px 2px black;
   a{
     color: black;
     :hover{
       color: var(--primary-color);
     }
+    margin:0;
   }
   @media ${BreakPoints.smallOnly}{
-    gap:10px;
+    gap:5px;
     top: 0px;
     right: 0px;
-    a{
-      color: var(--primary-color);
-    }
   }
 `;
 
@@ -144,10 +142,12 @@ export default function SlideShow({
             <h2>{slide.title}</h2>
             <ImageWrapper>
               <img alt = {`${slide.title}`} src={slide.image_path}/>
+              {(slide.projectUrl || slide.githubUrl) && 
               <Urls>
-                {/* <a target="blank" href={slide.projectUrl}><Icon icon = {faExternalLinkSquareAlt}/></a> */}
-                <a target="blank" href={slide.githubUrl}><Icon icon = {faGithubSquare}/></a>
+                {slide.projectUrl && <a target="blank" href={slide.projectUrl}><Icon icon = {faExternalLinkSquareAlt}/></a>}
+                {slide.githubUrl && <a target="blank" href={slide.githubUrl}><Icon icon = {faGithubSquare}/></a>}
               </Urls>
+}
             </ImageWrapper>
             <p>{slide.description}</p>
           </> 

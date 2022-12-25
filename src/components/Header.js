@@ -11,6 +11,7 @@ const HeaderWrapper = styled.header`
     padding: 20px 50px;
   }
   @media ${BreakPoints.smallOnly}{
+    
     padding: 10px 20px;
   }
 `;
@@ -44,15 +45,14 @@ const Applink = styled(Link)`
 `;
 const Logo = styled(Link)`
   display : flex;
+  width: 2.5rem; 
+  height: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--white);
+  padding: 4px;
   img{
-    width: 2.5rem; 
-    border-radius: 50%;
-    outline: 4px solid var(--primary-color);
-    padding: 2px;
-    background: var(--white);
-    @media ${BreakPoints.smallOnly}{
-      outline: none;
-    }
+    width:100%;
   }
 `;
 
