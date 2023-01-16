@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import styled from 'styled-components'
-import { BreakPoints, PageTitle } from '../styles/styles';
-import emailjs from 'emailjs-com';
-import dotenv from 'dotenv'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { BreakPoints, PageTitle } from "../styles/styles";
+import emailjs from "emailjs-com";
+import dotenv from "dotenv";
 dotenv.config();
 const ContactDiv = styled.form`
   width: 650px;
@@ -11,17 +11,17 @@ const ContactDiv = styled.form`
   grid-template-columns: 50% 50%;
   justify-content: center;
   text-align: center;
-  @media ${BreakPoints.medDown}{
+  @media ${BreakPoints.medDown} {
     width: 100%;
     margin: 0;
   }
-  @media ${BreakPoints.smallOnly}{
+  @media ${BreakPoints.smallOnly} {
     grid-template-columns: 100%;
   }
 `;
 
 const Title = styled(PageTitle)`
-  @media ${BreakPoints.xlargeDown}{
+  @media ${BreakPoints.xlargeDown} {
     font-size: 2.5rem;
   }
 `;
@@ -32,7 +32,7 @@ const FieldBlock = styled.div`
   justify-content: center;
   position: relative;
   border-left: 2px solid var(--light-gray);
-  @media ${BreakPoints.smallOnly}{
+  @media ${BreakPoints.smallOnly} {
     grid-row: 2 / 3;
     border-left: none;
     border-top: 2px solid var(--light-gray);
@@ -72,7 +72,7 @@ const Details = styled.div`
   padding: 30px;
   height: min-content;
   width: 100%;
-  textarea{
+  textarea {
     resize: none;
     font-size: 1.4rem;
     font-family: var(--primary-font);
@@ -80,43 +80,43 @@ const Details = styled.div`
     width: 100%;
     height: 200px;
   }
-  @media ${BreakPoints.medDown}{
-    textarea{
+  @media ${BreakPoints.medDown} {
+    textarea {
       font-size: 1.1rem;
     }
     padding: 20px;
   }
-  @media ${BreakPoints.smallOnly}{
-    textarea{
+  @media ${BreakPoints.smallOnly} {
+    textarea {
       padding: 10px;
     }
   }
-    `;
-
-const SubmitBlock = styled.div`
-grid-column: 1 / 3;
-text-align: center;
-border-top: 2px solid var(--light-gray);
-border-bottom: 2px solid var(--light-gray);
-padding: 30px 0;
 `;
 
-const SubmitButton = styled.button.attrs({type: 'button'})`
-  border:none;
+const SubmitBlock = styled.div`
+  grid-column: 1 / 3;
+  text-align: center;
+  border-top: 2px solid var(--light-gray);
+  border-bottom: 2px solid var(--light-gray);
+  padding: 30px 0;
+`;
+
+const SubmitButton = styled.button.attrs({ type: "button" })`
+  border: none;
   font-size: 40px;
   font-family: var(--primary-font);
   background: var(--light-gray);
   padding: 0 30px;
   border-radius: 5px;
-  :hover{
+  :hover {
     cursor: pointer;
     color: var(--white);
     background: var(--dark-gray);
     background: var(--primary-color);
-  } 
+  }
 `;
 
-const ReTryButton = styled(SubmitButton).attrs({type: 'button'})`
+const ReTryButton = styled(SubmitButton).attrs({ type: "button" })`
   font-size: initial;
   padding: 0 10px;
 `;
@@ -127,95 +127,160 @@ export default function Contact() {
     email: "",
     subject: "",
     messageContent: "",
-  })
+  });
   const [errors, setErrors] = useState({
     name: "",
     email: "",
     subject: "",
-    messageContent: ""
-  })
+    messageContent: "",
+  });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
-  function handleInputChange(e){
-    setFormState({...formState, [e.target.name]: e.target.value})
+  function handleInputChange(e) {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   }
-  function validateFormState(){
+  function validateFormState() {
     //For each state property, check type and perform validation. Store any errors
     const newErrors = {};
-    Object.entries(formState).forEach((field)=>{
+    Object.entries(formState).forEach((field) => {
       const [name, value] = field;
-      switch(name){
-        case 'name':
-          if(!value.length){
+      switch (name) {
+        case "name":
+          if (!value.length) {
             newErrors[name] = "please enter a name";
           }
           break;
-        case 'email':
-          if(!value.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)){
-            newErrors[name] = "please enter a valid email"
+        case "email":
+          if (
+            !value.match(
+              /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+            )
+          ) {
+            newErrors[name] = "please enter a valid email";
           }
           break;
-        case 'subject':
-          if(!value.length){
-            newErrors[name] = "please enter a subject"
+        case "subject":
+          if (!value.length) {
+            newErrors[name] = "please enter a subject";
           }
           break;
-        case 'messageContent':
-          if(!value.length){
-            newErrors[name] = "please write a message"
+        case "messageContent":
+          if (!value.length) {
+            newErrors[name] = "please write a message";
           }
           break;
         default:
           break;
       }
-    })
-    setErrors(newErrors)
+    });
+    setErrors(newErrors);
     return newErrors;
   }
-  function submitMessage(){
+  function submitMessage() {
     const newErrors = validateFormState();
-    if(Object.keys(newErrors).length === 0){
+    if (Object.keys(newErrors).length === 0) {
       setSubmitted(true);
       setSending(true);
-      emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, {name: formState.name, subject: formState.subject, email: formState.email, message_content: formState.messageContent }, process.env.REACT_APP_USER_ID).then(
-        (response) => {
-          setSending(false)
-          setEmailSent(true)
-        }, (err) => {
-          setSending(false)
-          setEmailSent(false)
-          console.log('error')
-        }
-      )
+      emailjs
+        .send(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMPLATE_ID,
+          {
+            name: formState.name,
+            subject: formState.subject,
+            email: formState.email,
+            message_content: formState.messageContent,
+          },
+          process.env.REACT_APP_USER_ID
+        )
+        .then(
+          (response) => {
+            setSending(false);
+            setEmailSent(true);
+          },
+          (err) => {
+            setSending(false);
+            setEmailSent(false);
+            console.log({ error: err });
+          }
+        );
     }
   }
   return (
-    <ContactDiv>  
+    <ContactDiv>
       <Title>Contact</Title>
       <FieldBlock>
         <FormField>
-          <input required type="text" placeholder='name' name='name' value={formState.name} onChange={handleInputChange}></input>
+          <input
+            required
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={formState.name}
+            onChange={handleInputChange}
+          ></input>
           <ErrorMessage>{errors.name}</ErrorMessage>
         </FormField>
         <FormField>
-          <input required type="email" placeholder='email' value={formState.email} name='email' onChange={handleInputChange}></input>
+          <input
+            required
+            type="email"
+            placeholder="email"
+            value={formState.email}
+            name="email"
+            onChange={handleInputChange}
+          ></input>
           <ErrorMessage>{errors.email}</ErrorMessage>
         </FormField>
         <FormField>
-          <input required type="text" placeholder='subject' value={formState.subject} name='subject' onChange={handleInputChange}></input>
+          <input
+            required
+            type="text"
+            placeholder="Subject"
+            value={formState.subject}
+            name="subject"
+            onChange={handleInputChange}
+          ></input>
           <ErrorMessage>{errors.subject}</ErrorMessage>
         </FormField>
       </FieldBlock>
       <Details>
-          <textarea maxLength={400} type="textarea" placeholder='how can I help?' value={formState.messageContent} name='messageContent' onChange={handleInputChange}></textarea>
-          <ErrorMessage>{errors.messageContent}</ErrorMessage>
+        <textarea
+          maxLength={400}
+          type="textarea"
+          placeholder="How can I help?"
+          value={formState.messageContent}
+          name="messageContent"
+          onChange={handleInputChange}
+        ></textarea>
+        <ErrorMessage>{errors.messageContent}</ErrorMessage>
       </Details>
       <SubmitBlock>
-        {submitted? 
-          <>{sending? 'sending...' : <div>{emailSent? <p>your message was sent!</p> : <p style={{color: 'var(--error-color)'}}>sorry, something went wrong. <ReTryButton onClick={()=>setSubmitted(false)}>Try again?</ReTryButton></p>}</div>}</> :
-          <SubmitButton type='button' onClick={submitMessage}>Send</SubmitButton>
-        }
+        {submitted ? (
+          <>
+            {sending ? (
+              "sending..."
+            ) : (
+              <div>
+                {emailSent ? (
+                  <p>your message was sent!</p>
+                ) : (
+                  <p style={{ color: "var(--error-color)" }}>
+                    sorry, something went wrong.{" "}
+                    <ReTryButton onClick={() => setSubmitted(false)}>
+                      Try again?
+                    </ReTryButton>
+                  </p>
+                )}
+              </div>
+            )}
+          </>
+        ) : (
+          <SubmitButton type="button" onClick={submitMessage}>
+            Send
+          </SubmitButton>
+        )}
       </SubmitBlock>
     </ContactDiv>
   );
