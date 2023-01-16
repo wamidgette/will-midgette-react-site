@@ -277,7 +277,11 @@ export default function Contact() {
             )}
           </>
         ) : (
-          <SubmitButton type="button" onClick={submitMessage}>
+          <SubmitButton
+            style={{ color: "#0c0c0c" }}
+            type="button"
+            onClick={submitMessage}
+          >
             Send
           </SubmitButton>
         )}
