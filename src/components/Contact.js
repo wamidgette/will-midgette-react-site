@@ -198,6 +198,12 @@ export default function Contact() {
           (response) => {
             setSending(false);
             setEmailSent(true);
+            setFormState({
+              name: "",
+              email: "",
+              subject: "",
+              messageContent: "",
+            });
           },
           (err) => {
             setSending(false);
