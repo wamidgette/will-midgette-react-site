@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
+import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Thumbs } from "swiper";
-import "swiper/swiper-bundle.css";
+import "swiper/css";
 import { BreakPoints } from "../styles/styles";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkSquareAlt } from "@fortawesome/free-solid-svg-icons";
@@ -161,7 +161,7 @@ export default function SlideShow({
                     </Urls>
                   )}
                 </ImageWrapper>
-                <p>{slide.description}</p>
+                <p dangerouslySetInnerHTML={{ __html: slide.description }}></p>
               </>
             )}
           </div>

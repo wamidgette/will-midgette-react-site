@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { BreakPoints, PageTitle } from "../styles/styles";
 import emailjs from "emailjs-com";
-import dotenv from "dotenv";
-dotenv.config();
 const ContactDiv = styled.form`
   width: 650px;
   margin: 100px auto;
@@ -108,11 +106,13 @@ const SubmitButton = styled.button.attrs({ type: "button" })`
   background: var(--light-gray);
   padding: 0 30px;
   border-radius: 5px;
+  transition: all 0.4s;
   :hover {
     cursor: pointer;
-    color: var(--white);
+    color: var(--white) !important;
     background: var(--dark-gray);
-    background: var(--primary-color);
+    background: var(--secondary-color);
+    transition: all 0.4s;
   }
 `;
 
@@ -221,7 +221,7 @@ export default function Contact() {
           <input
             required
             type="text"
-            placeholder="Name"
+            placeholder="Your name"
             name="name"
             value={formState.name}
             onChange={handleInputChange}
@@ -232,7 +232,7 @@ export default function Contact() {
           <input
             required
             type="email"
-            placeholder="email"
+            placeholder="Your email"
             value={formState.email}
             name="email"
             onChange={handleInputChange}

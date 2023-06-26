@@ -9,15 +9,6 @@ const ProjectsArray = [
     projectUrl: "https://ltonetwork.com",
   },
   {
-    image_path: "/images/projects/word-press.jpg",
-    thumbnail_path: "/images/projects/thumbnails/WordPress-logo.png",
-    tags: ["MongoDB, Express.js, React.js, Node.js"],
-    title: "Custom WordPress API for Enterprise-Level Company",
-    description:
-      "Custom API function for property rental company. Client requested a way to automate changes to their website's list of properties daily. Worked with client's property management company to create API endpoint that receives JSON payloads containing all property data on a daily schedule, and parses it into the client's property object data structure in WordPress.",
-  },
-
-  {
     image_path: "/images/projects/urban-area-info-finder.jpg",
     thumbnail_path: "/images/projects/thumbnails/urban-area-info-finder.jpg",
     tags: ["JavaScript, Google Maps API, Teleport API"],
@@ -27,7 +18,22 @@ const ProjectsArray = [
     projectUrl: "https://explore-cities.vercel.app/",
     githubUrl: "https://github.com/wamidgette/explore-cities",
   },
-
+  {
+    image_path: "/images/projects/gas.jpg",
+    thumbnail_path: "/images/projects/thumbnails/gas.jpg",
+    tags: ["google apps scripts"],
+    title: "Google/NetSuite ERP Integrations",
+    description: `I have developed various professional Google Apps Script (GAS) projects, integrating ERP data with Google Drive and automating tasks like ERP data synchronization with Google Sheets, updating Looker Studio dashboards, and mass-generating company PDF documents. These projects use NetSuite's OAuth2.0 authentication and Crypto.js library for encryption. In one project, I synced "unscriptable" NetSuite data with Google Sheets using a NetSuite RESTlet (custom webhook) and GAS script workaround. Another project involved generating PDFs from a Google Doc template using NetSuite ERP records. Old PDFs are archived and NetSuite records are upadated with new PDF URLs through the REST API.`,
+    githubUrl: "https://github.com/wamidgette/google-apps-scripts",
+  },
+  {
+    image_path: "/images/projects/word-press.jpg",
+    thumbnail_path: "/images/projects/thumbnails/word-press.jpg",
+    tags: ["MongoDB, Express.js, React.js, Node.js"],
+    title: "Custom WordPress API for Enterprise-Level Company",
+    description:
+      "Custom API function for property rental company. Client requested a way to automate changes to their website's list of properties daily. Worked with client's property management company to create API endpoint that receives JSON payloads containing all property data on a daily schedule, and parses it into the client's property object data structure in WordPress.",
+  },
   {
     image_path: "/images/projects/daredevil-dave.jpg",
     thumbnail_path: "/images/projects/thumbnails/daredevil-dave.jpg",
@@ -38,7 +44,6 @@ const ProjectsArray = [
     projectUrl: "https://wamidgette.github.io/daredevil-dave/",
     githubUrl: "https://github.com/wamidgette/DaredevilDave",
   },
-
   {
     image_path: "/images/projects/nodejs.jpg",
     thumbnail_path: "/images/projects/thumbnails/nodejs.jpg",
@@ -48,7 +53,6 @@ const ProjectsArray = [
       "This is a coding challenge I completed using Node and Express. The purpose was to create a queryable API that called upon an external API and rearranged the data returned based on the queries given by the user. Caching is utilized to improve performance.",
     githubUrl: "https://github.com/wamidgette/nodeApiCodingChallenge",
   },
-
   {
     image_path: "/images/projects/motorcycle-trips.jpg",
     thumbnail_path: "/images/projects/thumbnails/motorcycle-trips.jpg",

@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
-*, *::before, *::after {
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 html {
@@ -9,13 +11,13 @@ html {
   //Colors
   --primary-color: #770000;
   --secondary-color: #020077;
-  --white: #fff;
-  --light-gray:#b8b8b8; 
+  --white: #ffffff;
+  --light-gray: #b8b8b8;
   --dark-gray: #0e0e0e;
   --black: #0c0c0c;
   --error-color: #eb5757;
-  //Fonts 
-  --primary-font: 'Consolas', 'IBM Plex Mono', monospace;
+  //Fonts
+  --primary-font: "Consolas", "IBM Plex Mono", monospace;
   --secondary-font: poppins;
   --global-font-size: 16px;
   @media (max-width: 600px) {
@@ -23,51 +25,54 @@ html {
   }
 }
 
-.app{
+.app {
   display: flex;
   flex-direction: column;
 }
 
-header{
+header {
   flex: 0 0 0;
 }
 
-main{
-  position:relative;
+main {
+  position: relative;
   flex: 1 0 200px;
   display: flex;
   flex-direction: column;
   padding: 0 50px;
   //remove padding at tablet size downward
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     padding: 0;
   }
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--primary-font);
   color: var(--white);
 }
 
-p{
+p {
   color: var(--light-gray);
 }
 
-body{
+body {
   background: var(--dark-gray);
   color: var(--light-gray);
   font-family: var(--primary-font);
   font-size: 16px;
 }
 
-.app{
-  min-height:100vh;
+.app {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-@keyframes rotate20{
-  100%{
-      transform: rotateZ(-20deg) scale(1.2);
+@keyframes rotate20 {
+  100% {
+    transform: rotateZ(-20deg) scale(1.2);
   }
 }

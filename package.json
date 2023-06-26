@@ -19,7 +19,7 @@
     "react-helmet": "^6.1.0",
     "react-router": "^6.1.1",
     "react-router-dom": "^6.1.1",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.0",
     "sass": "^1.45.0",
     "styled-components": "^5.3.3",
     "swiper": "^7.3.3",
@@ -48,5 +48,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "browser": {
+    "path": false,
+    "stream": false
   }
 }
